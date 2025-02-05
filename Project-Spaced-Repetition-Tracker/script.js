@@ -12,7 +12,9 @@
 // };
 
 import { getUserIds } from "./storage.js"; 
-const userSelect = document.createElement("select");
+
+// const userSelect = document.createElement("select");
+document.getElementById("userSelect"); // Target the existing select element
 
 const userIds = getUserIds();
 console.log(userIds);
@@ -24,4 +26,4 @@ userIds.forEach(item => {
   userSelect.appendChild(option);
 });
 
-document.body.appendChild(userSelect);
+document.container.appendChild(userSelect);
