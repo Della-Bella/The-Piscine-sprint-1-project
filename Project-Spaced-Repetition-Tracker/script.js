@@ -11,63 +11,19 @@
 //   document.querySelector("body").innerText = `There are ${users.length} users`;
 // };
 
-import { getUserIds, addData } from "./storage.js";
-import { calculateRevisionDates } from "./dates.js";
+import { getUserIds } from "./storage.js"; 
 
+// const userSelect = document.createElement("select");
+document.getElementById("userSelect"); // Target the existing select element
 
-const userSelect = document.getElementById("userSelect");
-const scheduleBody = document.getElementById("schedule-body");
-const form = document.getElementById("topicform");
-const taskNameInput = document.getElementById("taskName");
-const taskDateInput = document.getElementById("taskDate");
-
-// Populate the dropdown with user options
 const userIds = getUserIds();
-userIds.forEach((userId) => {
-   const option = document.createElement("option");
-   option.value = userId;
-   option.textContent = `User ${userId}`;
-   userSelect.appendChild(option);
+console.log(userIds);
+
+userIds.forEach(item => {
+  const option = document.createElement("option");
+  option.value = item;
+  option.textContent = `User ${item}`;
+  userSelect.appendChild(option);
 });
 
-// Handle form submission
-form.addEventListener("submit", (event) => {
-   event.preventDefault(); // Prevent page reload
-
-   const selectedUserId = userSelect.value;
-   const taskName = taskNameInput.value;
-   const taskDate = taskDateInput.value;
-
-   if (!taskName || !taskDate) {
-      alert("Please enter both a topic name and a date.");
-      return;
-   }
-
-   // Calculate revision dates
-   const revisionDates = calculateRevisionDates(taskDate);
-   const newTask = {
-      name: taskName,
-      ...revisionDates,
-   };
-
-   // Store the new task for the selected user
-   addData(selectedUserId, [newTask]);
-
-   // Update the agenda to show the new task
-   displayAgenda(selectedUserId);
-
-   // Clear the input fields after submission
-   taskNameInput.value = "";
-   taskDateInput.value = "";
-});
-
-// Listen for user selection and update the agenda
-userSelect.addEventListener("change", (event) => {
-   const selectedUserId = event.target.value;
-   displayAgenda(selectedUserId);
-});
-
-// Display agenda for the first user on page load
-if (userIds.length > 0) {
-   displayAgenda(userIds[0]); // Load first user’s agenda initially
-}
+document.container.appendChild(userSelect);
