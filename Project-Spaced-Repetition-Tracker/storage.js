@@ -44,3 +44,5 @@ export function addData(userId, data) {
 export function clearData(userId) {
   localStorage.removeItem(`stored-data-user-${userId}`);
 }
+
+
