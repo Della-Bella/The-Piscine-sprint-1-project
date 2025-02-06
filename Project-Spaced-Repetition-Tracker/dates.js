@@ -22,3 +22,5 @@ export function calculateRevisionDates(startDate) {
    };
    
 }
+
+module.exports = calculateRevisionDates;
