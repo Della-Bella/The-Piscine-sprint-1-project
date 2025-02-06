@@ -1,7 +1,7 @@
 // Function to calculate revision dates
 export function calculateRevisionDates(startDate) {
    const start = new Date(startDate);
-   console.log("calculateRevisionDates called with startDate:", startDate);
+   // console.log("calculateRevisionDates called with startDate:", startDate);
    return {
       startDate: startDate,
       oneWeek: new Date(
@@ -20,6 +20,5 @@ export function calculateRevisionDates(startDate) {
          start.setFullYear(start.getFullYear() + 1)
       ).toISOString(),
    };
-   console.log("calculateRevisionDates returning:", revisionDates); // Debugging
-   return revisionDates;
+   
 }
